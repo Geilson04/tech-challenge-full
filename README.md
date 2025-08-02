@@ -238,7 +238,7 @@ npm test
 npm run test:coverage
 ```
 
-### ✅ Cobertura de Testes
+## ✅ Cobertura de Testes
 
 - Cobertura atual: **98.34%**
 
