@@ -238,6 +238,12 @@ npm test
 npm run test:coverage
 ```
 
+### ✅ Cobertura de Testes
+
+- Cobertura atual: **98.34%**
+
+<img width="911" height="438" alt="image" src="https://github.com/user-attachments/assets/7d72bf81-1242-40d6-96a3-6c66c8ed4def" />
+
 ---
 
 ## 📜 Exemplos de uso (cURL)
