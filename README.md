@@ -279,6 +279,23 @@ curl http://localhost:5000/posts \
 
 ---
 
+## 🤖 Integração Contínua (CI) com GitHub Actions
+
+Este projeto conta com um pipeline de **Integração Contínua** configurado com **GitHub Actions**, que executa automaticamente:
+
+- Instalação de dependências (`npm install`)
+- Execução dos testes (`npm test`)
+- Validação da aplicação a cada push ou pull request
+
+O workflow está configurado para atuar sobre a pasta `tech-challenge-fase2-master`, onde reside o código-fonte da aplicação.
+
+### 🔍 Status do pipeline
+
+![CI](https://github.com/SEU_USUARIO/SEU_REPOSITORIO/actions/workflows/main.yml/badge.svg)
+
+
+---
+
 ## 📄 Licença
 
 Este projeto foi desenvolvido para fins educacionais (FIAP Tech Challenge).
