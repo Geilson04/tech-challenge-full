@@ -272,13 +272,6 @@ curl http://localhost:5000/posts \
 
 ---
 
-## ⚠️ Observações
-
-- No modo Docker, os dados **não são persistidos** entre reinícios se você não adicionar volumes no `docker-compose.yml`.  
-- Para produção, configure corretamente as variáveis de ambiente (`DATABASE_URL`, `JWT_SECRET` etc.).
-
----
-
 ## 🤖 Integração Contínua (CI) com GitHub Actions
 
 Este projeto conta com um pipeline de **Integração Contínua** configurado com **GitHub Actions**, que executa automaticamente:
@@ -293,6 +286,12 @@ O workflow está configurado para atuar sobre a pasta `tech-challenge-fase2-mast
 
 ![CI]([https://github.com/Geilson04/tech-challenge-full/actions])
 
+---
+
+## ⚠️ Observações
+
+- No modo Docker, os dados **não são persistidos** entre reinícios se você não adicionar volumes no `docker-compose.yml`.  
+- Para produção, configure corretamente as variáveis de ambiente (`DATABASE_URL`, `JWT_SECRET` etc.).
 
 ---
 
