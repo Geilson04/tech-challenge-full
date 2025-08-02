@@ -17,6 +17,8 @@ jobs:
 
       - name: Instalar dependências
         run: npm install
+        working-directory: tech-challenge-full
 
       - name: Rodar testes
         run: npm test
+        working-directory: tech-challenge-full
