@@ -282,10 +282,6 @@ Este projeto conta com um pipeline de **Integração Contínua** configurado com
 
 O workflow está configurado para atuar sobre a pasta `tech-challenge-fase2-master`, onde reside o código-fonte da aplicação.
 
-### 🔍 Status do pipeline
-
-![CI]([https://github.com/Geilson04/tech-challenge-full/actions])
-
 ---
 
 ## ⚠️ Observações
