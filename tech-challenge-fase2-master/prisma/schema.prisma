@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String   @db.VarChar(255)
+  email     String   @unique(map: "users_email_unique") @db.VarChar(255)
+  password  String   @db.VarChar(255)
+  role      String   @default("MEMBER")
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @default(now()) @updatedAt @db.Timestamptz(6)
+  posts     Post[]
+
+  @@map("users")
+}
+
+model Post {
+  id          String    @id @db.VarChar(255)
+  slug        String    @unique(map: "posts_slug_unique") @db.VarChar(255)
+  title       String    @db.VarChar(255)
+  content     String?
+  author      String    @db.VarChar(255)
+  publishedAt DateTime? @db.Timestamptz(6)
+  createdAt   DateTime  @default(now()) @db.Timestamptz(6)
+  updatedAt   DateTime  @default(now()) @updatedAt @db.Timestamptz(6)
+  userId      String?   
+  user        User?     @relation(fields: [userId], references: [id], onUpdate: NoAction, map: "posts_userid_foreign")
+
+  @@index([publishedAt], map: "idx_posts_publishedAt")
+  @@map("posts")
+}
+
+model knex_migrations {
+  id             Int       @id @default(autoincrement())
+  name           String?   @db.VarChar(255)
+  batch          Int?
+  migration_time DateTime? @db.Timestamptz(6)
+}
+
+model knex_migrations_lock {
+  index     Int  @id @default(autoincrement())
+  is_locked Int?
+}
