@@ -291,7 +291,7 @@ O workflow está configurado para atuar sobre a pasta `tech-challenge-fase2-mast
 
 ### 🔍 Status do pipeline
 
-![CI](https://github.com/SEU_USUARIO/SEU_REPOSITORIO/actions/workflows/main.yml/badge.svg)
+![CI]([https://github.com/Geilson04/tech-challenge-full/actions])
 
 
 ---
