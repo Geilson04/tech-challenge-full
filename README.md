@@ -225,8 +225,44 @@ DELETE /posts/:id
 | id_autor | INT (FK) | ID do professor que criou (→ professores) |
 | data_criacao | DATETIME | Data em que foi criado |
 | data_atualiacao | DATETIME | Última modificação |
-
 ---
+
+## 🧱 Arquitetura do Projeto
+
+O projeto segue uma arquitetura organizada em **camadas**, separando responsabilidades:
+
+### 📁 Estrutura de Pastas
+
+```
+tech-challenge-fase2-master/
+├── .github/workflows/       # CI/CD com GitHub Actions
+│   └── main.yml
+│
+├── migrations/              # Migrations SQL (via Knex)
+├── prisma/                  # Schema do Prisma e seeds
+    └── migrations/          # Histórico de versões do schema (migrations geradas pelo Prisma)
+├── scripts/                 # Scripts auxiliares
+├── src/                     # Código-fonte principal
+│   ├── controllers/         # Camada de controle (interface com o cliente)
+│   ├── models/              # Tipagens e modelos de domínio
+│   ├── modules/db/          # Conexão e configuração do banco de dados
+│   ├── routes/              # Rotas HTTP da aplicação
+│   ├── services/            # Lógica de negócio
+│   └── index.ts             # Ponto de entrada da aplicação
+│
+├── .dockerignore            # Arquivos ignorados ao construir imagem Docker
+├── .eslintrc                # Regras de linting para manter o padrão de código
+├── .gitignore               # Arquivo que define o que o Git deve ignorar
+├── .prettierrc              # Regras de formatação de código
+├── .swcrc                   # Configuração do SWC
+├── Dockerfile               # Configuração do container da API
+├── docker-compose.yml       # Orquestração de containers
+├── jest.config.js           # Configuração de testes
+├── knexfile.ts              # Configuração do Knex
+├── package-lock.json        # Travamento exato das versões das dependências instaladas
+├── package.json             # Dependências e scripts do projeto
+└── tsconfig.json            # Configuração do TypeScript
+```
 
 ## 🧪 Testes
 
