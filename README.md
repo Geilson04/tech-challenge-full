@@ -396,8 +396,6 @@ Esse script reduziu significativamente o tempo de setup e facilitou para que tod
 - Compreender o fluxo de autenticação com **JWT** e como simular chamadas de API utilizando `curl`.
 - Saber como escrever **documentações práticas** que realmente ajudam outras pessoas a rodar o projeto sem fricção.
 
-> ✨ Apesar das dificuldades iniciais, conseguimos montar uma infraestrutura de backend robusta, com banco de dados e scripts de automação que facilitam o desenvolvimento em equipe.  
-> O uso de Docker, embora desafiador no começo, foi fundamental para garantir consistência e reprodutibilidade no projeto.
 
 ---
 
