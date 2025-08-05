@@ -326,6 +326,80 @@ O workflow está configurado para atuar sobre a pasta `tech-challenge-fase2-mast
 
 ---
 
+## 🚧 Dificuldades Encontradas
+
+### 1. Problemas ao subir o banco com Docker
+
+Ao tentar subir os containers com `docker compose up -d`, a API ficava indisponível ou dava erro de conexão com o banco.  
+Descobrimos que o Postgres ainda não estava pronto quando o backend tentava se conectar.
+
+**✅ Solução:**  
+Implementamos um script de espera no Docker e um script Bash que aguarda o banco ficar saudável antes de iniciar a aplicação.
+
+
+### 2. Migrações não sendo aplicadas
+
+Mesmo após o banco estar funcional, a aplicação retornava erros como "tabela não encontrada".
+
+**✅ Solução:**  
+Rodamos as migrações com o comando:
+
+```bash
+docker compose run --rm backend npm run db:migrate```
+
+Além disso, criamos um script automatizado para garantir que as migrações sejam executadas logo após a inicialização do ambiente.
+
+
+### 3. Dúvidas sobre seed de dados
+
+Inicialmente, não sabíamos se era necessário popular o banco com dados fictícios.  
+Ao rodar a API com um banco vazio, percebemos que a interface não mostrava nada, dificultando os testes.
+
+**✅ Solução:**  
+Utilizamos seeders para criar usuários e posts automaticamente, o que aumentou a produtividade nos testes e simulações.
+
+
+### 4. Token JWT e testes com `curl`
+
+No início, não sabíamos como autenticar para acessar rotas privadas da API (como criar ou listar posts).
+
+**✅ Solução:**  
+Lemos a documentação da API e entendemos que era necessário:
+
+- Fazer login com `POST /login`
+- Extrair o token JWT do response
+- Utilizar esse token em chamadas autenticadas (`Authorization: Bearer <token>`)
+
+Criamos comandos `curl` prontos para simular esses acessos, o que ajudou bastante nos testes manuais.
+
+---
+
+## 🛠️ Solução Aplicada
+
+Criamos um script Bash chamado `run-migrate-and-seed.sh` que:
+
+- Sobe o ambiente com Docker Compose
+- Espera o banco Postgres ficar disponível
+- Roda as migrações
+- Executa o seed de dados
+- Faz login e testa a listagem de posts com token JWT
+
+Esse script reduziu significativamente o tempo de setup e facilitou para que todos os colegas da equipe pudessem testar a API com apenas um comando.
+
+---
+
+## 📚 Aprendizados
+
+- Trabalhar com ambientes isolados utilizando Docker.
+- Entender a importância de **migrações e seeds automatizados** para manter o banco sincronizado com o código.
+- Compreender o fluxo de autenticação com **JWT** e como simular chamadas de API utilizando `curl`.
+- Saber como escrever **documentações práticas** que realmente ajudam outras pessoas a rodar o projeto sem fricção.
+
+> ✨ Apesar das dificuldades iniciais, conseguimos montar uma infraestrutura de backend robusta, com banco de dados e scripts de automação que facilitam o desenvolvimento em equipe.  
+> O uso de Docker, embora desafiador no começo, foi fundamental para garantir consistência e reprodutibilidade no projeto.
+
+---
+
 ## ⚠️ Observações
 
 - No modo Docker, os dados **não são persistidos** entre reinícios se você não adicionar volumes no `docker-compose.yml`.  
