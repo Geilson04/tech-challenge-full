@@ -345,7 +345,8 @@ Mesmo após o banco estar funcional, a aplicação retornava erros como "tabela 
 Rodamos as migrações com o comando:
 
 ```bash
-docker compose run --rm backend npm run db:migrate```
+docker compose run --rm backend npm run db:migrate
+```
 
 Além disso, criamos um script automatizado para garantir que as migrações sejam executadas logo após a inicialização do ambiente.
 
